@@ -1,0 +1,19 @@
+.container {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  z-index: var(--z-toast);
+  pointer-events: none;
+}
+
+/* Mobile: center toasts */
+@media (max-width: 640px) {
+  .container {
+    right: var(--space-md);
+    left: var(--space-md);
+    align-items: center;
+  }
+}

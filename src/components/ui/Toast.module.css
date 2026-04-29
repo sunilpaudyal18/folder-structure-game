@@ -1,0 +1,85 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  min-width: 280px;
+  max-width: 400px;
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  pointer-events: auto;
+}
+
+/* --- Type variants --- */
+.success {
+  border-color: var(--color-success);
+  background: var(--color-success-bg);
+}
+
+.success .iconWrap {
+  color: var(--color-success);
+}
+
+.error {
+  border-color: var(--color-error);
+  background: var(--color-error-bg);
+}
+
+.error .iconWrap {
+  color: var(--color-error);
+}
+
+.info {
+  border-color: var(--color-info);
+  background: var(--color-info-bg);
+}
+
+.info .iconWrap {
+  color: var(--color-info);
+}
+
+.warning {
+  border-color: var(--color-warning);
+  background: var(--color-warning-bg);
+}
+
+.warning .iconWrap {
+  color: var(--color-warning);
+}
+
+/* --- Inner elements --- */
+.iconWrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  flex: 1;
+  margin: 0;
+  line-height: var(--leading-snug);
+}
+
+.closeBtn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.closeBtn:hover {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}

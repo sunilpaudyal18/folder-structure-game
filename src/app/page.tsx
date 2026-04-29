@@ -1,65 +1,151 @@
-import Image from "next/image";
+import Link from 'next/link';
+import {
+  Terminal,
+  FolderTree,
+  Zap,
+  Target,
+  ArrowRight,
+  Gamepad2,
+  BookOpen,
+  Upload,
+  Layers,
+  ChevronRight,
+} from 'lucide-react';
+import styles from './page.module.css';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className={styles.main}>
+      {/* ============ HERO ============ */}
+      <section className={styles.hero}>
+        <div className={styles.heroGrid} />
+        <div className={styles.heroContent}>
+          <div className={styles.heroBadge}>
+            <Terminal size={14} />
+            <span>Interactive File System Game</span>
+          </div>
+
+          <h1 className={styles.heroTitle}>
+            Master File Paths
+            <br />
+            <span className={styles.heroAccent}>Through Play</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className={styles.heroDesc}>
+            Navigate visual folder trees using path commands. Learn absolute and
+            relative paths in a fun, interactive puzzle game.
           </p>
+
+          <div className={styles.heroCta}>
+            <Link href="/play" className={styles.btnPrimary} id="cta-play">
+              <Gamepad2 size={18} />
+              Play Now
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          {/* Animated terminal preview */}
+          <div className={styles.terminalPreview}>
+            <div className={styles.terminalHeader}>
+              <span className={styles.terminalDot} data-color="red" />
+              <span className={styles.terminalDot} data-color="yellow" />
+              <span className={styles.terminalDot} data-color="green" />
+              <span className={styles.terminalTitle}>pathpilot</span>
+            </div>
+            <div className={styles.terminalBody}>
+              <div className={styles.terminalLine}>
+                <span className={styles.terminalPrompt}>~/documents $</span>
+                <span className={styles.terminalCmd}> cd ../src/components</span>
+              </div>
+              <div className={styles.terminalLine}>
+                <span className={styles.terminalSuccess}>Navigated to /root/src/components</span>
+              </div>
+              <div className={styles.terminalLine}>
+                <span className={styles.terminalPrompt}>~/src/components $</span>
+                <span className={styles.terminalCursor}>|</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ============ FEATURES ============ */}
+      <section className={styles.features} id="features">
+        <h2 className={styles.sectionTitle}>How It Works</h2>
+        <p className={styles.sectionDesc}>
+          A visual approach to learning one of the most essential developer skills
+        </p>
+
+        <div className={styles.featureGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon} style={{ color: 'var(--color-primary)' }}>
+              <FolderTree size={28} />
+            </div>
+            <h3>Visual Tree</h3>
+            <p>See the file system as an interactive tree. Each folder is a node you can navigate to.</p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon} style={{ color: 'var(--color-secondary)' }}>
+              <Terminal size={28} />
+            </div>
+            <h3>Path Commands</h3>
+            <p>Type real path commands like <code>../folder</code> or <code>/root/src</code> to move your character.</p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon} style={{ color: 'var(--color-accent)' }}>
+              <Target size={28} />
+            </div>
+            <h3>Reach the Target</h3>
+            <p>Each level has a target folder. Find the right path to navigate there and win.</p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon} style={{ color: 'var(--color-success)' }}>
+              <Zap size={28} />
+            </div>
+            <h3>Instant Feedback</h3>
+            <p>See your character move in real-time. Invalid paths trigger clear error messages.</p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon} style={{ color: 'var(--color-warning)' }}>
+              <Layers size={28} />
+            </div>
+            <h3>Progressive Levels</h3>
+            <p>Five handcrafted levels from basics to complex trees with constraints and hidden structures.</p>
+          </div>
+
+          <div className={styles.featureCard}>
+            <div className={styles.featureIcon} style={{ color: 'var(--color-info)' }}>
+              <Upload size={28} />
+            </div>
+            <h3>Custom Trees</h3>
+            <p>Upload your own folder structure as JSON or generate random trees for endless challenges.</p>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ============ CTA ============ */}
+      <section className={styles.ctaSection}>
+        <h2 className={styles.ctaTitle}>Ready to Navigate?</h2>
+        <p className={styles.ctaDesc}>
+          Start with the basics and work your way to complex file trees.
+        </p>
+        <Link href="/play" className={styles.btnPrimary} id="cta-play-bottom">
+          <Gamepad2 size={18} />
+          Start Playing
+          <ChevronRight size={16} />
+        </Link>
+      </section>
+
+      {/* ============ FOOTER ============ */}
+      <footer className={styles.footer}>
+        <p>
+          PathPilot — Built for learning file system navigation
+        </p>
+      </footer>
+    </main>
   );
 }

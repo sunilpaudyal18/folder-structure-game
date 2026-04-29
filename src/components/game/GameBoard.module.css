@@ -1,0 +1,125 @@
+.board {
+  position: relative;
+  flex: 1;
+  overflow: auto;
+  padding: var(--space-3xl) var(--space-xl) var(--space-xl);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.treeContainer {
+  display: flex;
+  justify-content: center;
+  min-width: min-content;
+}
+
+/* --- Subtree wrapper --- */
+.subtree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* --- Children container (vertical line + row) --- */
+.childrenContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Vertical line from parent down to the horizontal connector */
+.verticalLine {
+  width: var(--tree-line-width);
+  height: calc(var(--tree-level-gap) / 2);
+  background: var(--color-tree-line);
+}
+
+/* --- Children row (horizontal layout) --- */
+.childrenRow {
+  display: flex;
+  gap: 0;
+  position: relative;
+}
+
+/* --- Individual child column --- */
+.childWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 0 var(--space-md);
+}
+
+/* Vertical connector from horizontal bar down to child node */
+.childConnector {
+  width: var(--tree-line-width);
+  height: calc(var(--tree-level-gap) / 2);
+  background: var(--color-tree-line);
+}
+
+/* Horizontal line segments - using borders on child wrappers */
+/* First child: horizontal line going right from center */
+.childFirst {
+  border-top: var(--tree-line-width) solid var(--color-tree-line);
+  border-top-right-radius: 0;
+  /* Cover from center to right edge */
+  border-left: none;
+  margin-left: 0;
+}
+
+.childFirst::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  height: 0;
+  border-top: var(--tree-line-width) solid var(--color-tree-line);
+}
+
+/* Last child: horizontal line going left from center */
+.childLast::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 50%;
+  height: 0;
+  border-top: var(--tree-line-width) solid var(--color-tree-line);
+}
+
+/* Middle children: full horizontal line */
+.childMiddle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: var(--tree-line-width) solid var(--color-tree-line);
+}
+
+/* Only child: just a straight vertical line, no horizontal */
+.childOnly::before {
+  display: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .board {
+    padding: var(--space-2xl) var(--space-sm) var(--space-md);
+  }
+
+  .childWrapper {
+    padding: 0 var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .childWrapper {
+    padding: 0 var(--space-xs);
+  }
+}

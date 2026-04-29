@@ -1,0 +1,36 @@
+.player {
+  position: absolute;
+  z-index: var(--z-player);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 8px var(--color-primary-glow));
+  pointer-events: none;
+}
+
+.celebrating {
+  color: var(--color-success);
+  filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.5));
+  animation: celebrate-bounce 0.6s ease infinite;
+}
+
+@keyframes celebrate-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.15); }
+}
+
+.celebrationBurst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-success);
+  pointer-events: none;
+}
