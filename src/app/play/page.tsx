@@ -23,7 +23,7 @@ import ToastContainer from '@/components/ui/ToastContainer';
 import styles from './page.module.css';
 
 export default function PlayPage() {
-  const { state, visiblePaths, loadLevel, executeMove, resetLevel } = useGameEngine();
+  const { state, visiblePaths, loadLevel, executeMove, previewMove, resetLevel } = useGameEngine();
   const toast = useToast();
 
   const [showMenu, setShowMenu] = useState(true);
@@ -188,6 +188,7 @@ export default function PlayPage() {
             currentPath={state.currentPath}
             tree={state.level.tree}
             onSubmit={handlePathSubmit}
+            onPreview={previewMove}
             disabled={isWon || isLost}
             hasError={inputError}
           />

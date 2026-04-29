@@ -146,14 +146,14 @@ export function useGameEngine(): UseGameEngineReturn {
     }
 
     const result = resolvePath(state.level.tree, state.currentPath, input);
-    if (result.success) {
-      if (state.displayPath !== result.finalPath) {
-        setState(prev => ({ ...prev, displayPath: result.finalPath }));
-      }
-    } else {
-      if (state.displayPath !== state.currentPath) {
-        setState(prev => ({ ...prev, displayPath: prev.currentPath }));
-      }
+    
+    /* 
+     * Even if success is false, resolvePath returns the finalPath up to the point of failure.
+     * We want to display the robot at the furthest valid directory the user has typed so far,
+     * so we use result.finalPath instead of jumping back to currentPath.
+     */
+    if (state.displayPath !== result.finalPath) {
+      setState(prev => ({ ...prev, displayPath: result.finalPath }));
     }
   }, [state.status, state.level, state.currentPath, state.displayPath]);
 

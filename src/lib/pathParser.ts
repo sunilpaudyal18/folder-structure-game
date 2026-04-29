@@ -157,17 +157,10 @@ export function resolvePath(
       }
 
       if (seg === '..') {
-        /* Go up to parent */
-        if (workingSegments.length <= 1) {
-          return {
-            success: false,
-            steps,
-            finalPath: segmentsToPath(workingSegments),
-            error: 'Cannot navigate above root directory',
-            errorSegment: '..',
-          };
+        /* Go up to parent. If already at root, just stay at root (Unix behavior) */
+        if (workingSegments.length > 1) {
+          workingSegments.pop();
         }
-        workingSegments.pop();
         steps.push(segmentsToPath(workingSegments));
         continue;
       }

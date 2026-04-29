@@ -1,5 +1,6 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import PwaInit from '@/components/PwaInit';
 import './globals.css';
 
 const geistSans = Geist({
@@ -12,7 +13,16 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+export const viewport: Viewport = {
+  themeColor: '#06b6d4',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://pathpilot.app'), // Replace with actual domain when deployed
   title: 'PathPilot - Learn File Paths Through Interactive Game',
   description:
     'Master file system navigation with PathPilot, an interactive puzzle game that teaches relative and absolute paths through visual tree exploration.',
@@ -24,6 +34,20 @@ export const metadata: Metadata = {
     'terminal path trainer',
     'command line practice',
   ],
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png' }
+    ],
+    apple: [
+      { url: '/icons/icons/icon-192x192.png' }
+    ]
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'PathPilot',
+  },
   openGraph: {
     title: 'PathPilot - Learn File Paths Through Interactive Game',
     description:
@@ -31,12 +55,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'PathPilot',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'PathPilot - Interactive File System Navigation Game',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'PathPilot - Learn File Paths Through Interactive Game',
     description:
       'Master file system navigation with PathPilot. Navigate visual folder trees using path commands.',
+    images: ['/og-image.png'],
   },
 };
 
@@ -50,7 +83,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <PwaInit />
+        {children}
+      </body>
     </html>
   );
 }

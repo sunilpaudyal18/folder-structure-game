@@ -76,8 +76,8 @@ function getSuggestions(tree: TreeNode, currentPath: string, input: string): str
     .map((c) => c.name)
     .filter((name) => name.toLowerCase().startsWith(prefix.toLowerCase()));
 
-  /* Add '..' if at root of input and it matches */
-  if (lastSlashIdx === -1 && getParentPath(resolvedDirPath) && '..'.startsWith(prefix)) {
+  /* Add '..' if it matches the prefix and we are not at root */
+  if (getParentPath(resolvedDirPath) && '..'.startsWith(prefix)) {
     suggestions.unshift('..');
   }
 
