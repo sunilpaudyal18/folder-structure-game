@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pathpilot-v1';
+const CACHE_NAME = 'folderrun-v1';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();

@@ -22,10 +22,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pathpilot.app'), // Replace with actual domain when deployed
-  title: 'PathPilot - Learn File Paths Through Interactive Game',
+  metadataBase: new URL('https://folderrun.app'), // Replace with actual domain when deployed
+  title: 'FolderRun - Learn File Paths Through Interactive Game',
   description:
-    'Master file system navigation with PathPilot, an interactive puzzle game that teaches relative and absolute paths through visual tree exploration.',
+    'Master file system navigation with FolderRun, an interactive puzzle game that teaches relative and absolute paths through visual tree exploration.',
   keywords: [
     'file system game',
     'learn relative path',
@@ -46,29 +46,29 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'PathPilot',
+    title: 'FolderRun',
   },
   openGraph: {
-    title: 'PathPilot - Learn File Paths Through Interactive Game',
+    title: 'FolderRun - Learn File Paths Through Interactive Game',
     description:
-      'Master file system navigation with PathPilot. Navigate visual folder trees using path commands in this interactive educational game.',
+      'Master file system navigation with FolderRun. Navigate visual folder trees using path commands in this interactive educational game.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'PathPilot',
+    siteName: 'FolderRun',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'PathPilot - Interactive File System Navigation Game',
+        alt: 'FolderRun - Interactive File System Navigation Game',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PathPilot - Learn File Paths Through Interactive Game',
+    title: 'FolderRun - Learn File Paths Through Interactive Game',
     description:
-      'Master file system navigation with PathPilot. Navigate visual folder trees using path commands.',
+      'Master file system navigation with FolderRun. Navigate visual folder trees using path commands.',
     images: ['/og-image.png'],
   },
 };

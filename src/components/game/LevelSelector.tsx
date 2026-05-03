@@ -7,8 +7,9 @@
  */
 
 import { useRef } from 'react';
+import Link from 'next/link';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Play, Lock, Unlock, Gauge, Eye, Shuffle, Upload, TerminalSquare } from 'lucide-react';
+import { Lock, Gauge, Eye, Shuffle, Upload, TerminalSquare, ArrowLeft, Folder, Zap, Trophy, Target } from 'lucide-react';
 import type { LevelConfig } from '@/types';
 import styles from './LevelSelector.module.css';
 
@@ -85,9 +86,51 @@ function TiltCard({ children, onClick, delay, accentColor, className = '' }: any
 export default function LevelSelector({ levels, onSelect, onCustom, onGenerate }: LevelSelectorProps) {
   return (
     <div className={styles.container}>
+      <div className={styles.topBar}>
+        <Link href="/" className={styles.backBtn} id="back-to-home">
+          <ArrowLeft size={16} />
+          Home
+        </Link>
+      </div>
+
+      {/* ── Hero Header ── */}
       <div className={styles.header}>
-        <h2 className={styles.title}>Select a Mission</h2>
-        <p className={styles.subtitle}>Navigate the file tree to reach the target folder</p>
+        <div className={styles.headerGlow} />
+
+        <div className={styles.iconBadge}>
+          <Folder size={28} className={styles.iconBadgeIcon} />
+        </div>
+
+        <div className={styles.titleWrap}>
+          <span className={styles.titleEyebrow}>FolderRun</span>
+          <h2 className={styles.title}>
+            Select a{' '}
+            <span className={styles.titleHighlight}>Mission</span>
+          </h2>
+          <div className={styles.titleUnderline} />
+        </div>
+
+        <p className={styles.subtitle}>
+          Navigate the file tree using path commands and reach the target folder
+        </p>
+
+        {/* Quick stats strip */}
+        <div className={styles.statsRow}>
+          <div className={styles.statItem}>
+            <Trophy size={14} className={styles.statIcon} />
+            <span>{levels.length} Missions</span>
+          </div>
+          <div className={styles.statDivider} />
+          <div className={styles.statItem}>
+            <Zap size={14} className={styles.statIcon} />
+            <span>Instant Feedback</span>
+          </div>
+          <div className={styles.statDivider} />
+          <div className={styles.statItem}>
+            <Target size={14} className={styles.statIcon} />
+            <span>Real Path Commands</span>
+          </div>
+        </div>
       </div>
 
       <div className={styles.grid}>

@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'PathPilot',
-    short_name: 'PathPilot',
+    name: 'FolderRun',
+    short_name: 'FolderRun',
     description: 'Learn file system navigation through an interactive puzzle game.',
     start_url: '/',
     display: 'standalone',

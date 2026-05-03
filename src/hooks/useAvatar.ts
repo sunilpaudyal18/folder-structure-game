@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 
-const AVATAR_KEY = 'pathpilot-avatar';
+const AVATAR_KEY = 'folderrun-avatar';
 
 export function useAvatar() {
   const [avatar, setAvatar] = useState<string>('bot');
